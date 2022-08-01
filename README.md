@@ -1,6 +1,8 @@
-# { PROJECT NAME }
+# CSV TUI
 
 ## Overview
+
+A Terminal UI for viewing and mutating CSV files
 
 ## Info
 
