@@ -29,3 +29,23 @@ I started using this [csv](https://blog.burntsushi.net/csv/) crate
 
 
 <hr>
+
+
+<strong>Name: </strong> The Arctesian
+<br>
+<strong>Time: </strong>  08:43 - 09:26
+<br>
+<strong>Date: </strong>  07.08.22
+<br>
+<strong>Version: </strong> Pre
+<br>
+<strong>Goal: </strong> Overcomplicate copy and pasting code
+<br>
+<strong>Description: </strong>
+<br>
+
+I started using this [tui](https://docs.rs/tui/latest/tui/) and achieved my goal
+
+
+
+<hr>

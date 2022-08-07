@@ -1,34 +1,42 @@
-extern crate csv;
+use std::{io, thread, time::Duration};
+use tui::{
+    backend::CrosstermBackend,
+    widgets::{Widget, Block, Borders},
+    layout::{Layout, Constraint, Direction},
+    Terminal
+};
+use crossterm::{
+    event::{self, DisableMouseCapture, EnableMouseCapture, Event, KeyCode},
+    execute,
+    terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
+};
 
-use std::env;
-use std::error::Error;
-use std::ffi::OsString;
-use std::fs::File;
-use std::process;
+fn main() -> Result<(), io::Error> {
+    // setup terminal
+    enable_raw_mode()?;
+    let mut stdout = io::stdout();
+    execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;
+    let backend = CrosstermBackend::new(stdout);
+    let mut terminal = Terminal::new(backend)?;
 
-fn run() -> Result<(), Box<Error>> {
-    let file_path = get_first_arg()?;
-    let file = File::open(file_path)?;
-    let mut rdr = csv::Reader::from_reader(file);
-    for result in rdr.records() {
-        let record = result?;
-        println!("{:?}", record);
-    }
+    terminal.draw(|f| {
+        let size = f.size();
+        let block = Block::default()
+            .title("Block")
+            .borders(Borders::ALL);
+        f.render_widget(block, size);
+    })?;
+
+    thread::sleep(Duration::from_millis(5000));
+
+    // restore terminal
+    disable_raw_mode()?;
+    execute!(
+        terminal.backend_mut(),
+        LeaveAlternateScreen,
+        DisableMouseCapture
+    )?;
+    terminal.show_cursor()?;
+
     Ok(())
-}
-
-/// Returns the first positional argument sent to this process. If there are no
-/// positional arguments, then this returns an error.
-fn get_first_arg() -> Result<OsString, Box<Error>> {
-    match env::args_os().nth(1) {
-        None => Err(From::from("expected 1 argument, but got none")),
-        Some(file_path) => Ok(file_path),
-    }
-}
-
-fn main() {
-    if let Err(err) = run() {
-        println!("{}", err);
-        process::exit(1);
-    }
 }

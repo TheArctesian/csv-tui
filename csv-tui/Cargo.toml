@@ -8,3 +8,5 @@ authors = ["The Arctesian"]
 
 [dependencies]
 csv = '1.1'
+tui = "0.18"
+crossterm = "0.23"
