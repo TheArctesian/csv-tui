@@ -1,7 +1,0 @@
-/home/daniel/Scripts/Project/csv-tui/target/debug/deps/smallvec-1d00c5ff0baecfe7.rmeta: /home/daniel/.cargo/registry/src/github.com-1ecc6299db9ec823/smallvec-1.10.0/src/lib.rs
-
-/home/daniel/Scripts/Project/csv-tui/target/debug/deps/libsmallvec-1d00c5ff0baecfe7.rlib: /home/daniel/.cargo/registry/src/github.com-1ecc6299db9ec823/smallvec-1.10.0/src/lib.rs
-
-/home/daniel/Scripts/Project/csv-tui/target/debug/deps/smallvec-1d00c5ff0baecfe7.d: /home/daniel/.cargo/registry/src/github.com-1ecc6299db9ec823/smallvec-1.10.0/src/lib.rs
-
-/home/daniel/.cargo/registry/src/github.com-1ecc6299db9ec823/smallvec-1.10.0/src/lib.rs:
